@@ -1,2 +1,3 @@
-# lu_roleplay
-Life in Liberty City
+# Liberty Unleashed - Roleplay Script
+This is from the old Life in Liberty City server.
+
