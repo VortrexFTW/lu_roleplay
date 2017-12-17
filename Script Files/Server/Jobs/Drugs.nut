@@ -2,37 +2,37 @@
 
 function InitDrugsJobScript ( ) {
 
-	AddDrugsJobCommandHandlers ( );
+    AddDrugsJobCommandHandlers ( );
 
-	return true;
+    return true;
 
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function AddDrugsJobCommandHandlers ( ) {
-	
-	return true;
-	
+    
+    return true;
+    
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function IsPlayerDrugDealer ( pPlayer ) {
 
-	local pPlayerData = GetPlayerData ( pPlayer );
-	
-	if ( DoesPlayerHaveAJob ( pPlayer ) ) {
-	
-		if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Drug ) {
-		
-			return true;
-		
-		}
-		
-	}
-	
-	return false;
+    local pPlayerData = GetPlayerData ( pPlayer );
+    
+    if ( DoesPlayerHaveAJob ( pPlayer ) ) {
+    
+        if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Drug ) {
+        
+            return true;
+        
+        }
+        
+    }
+    
+    return false;
 
 }
 

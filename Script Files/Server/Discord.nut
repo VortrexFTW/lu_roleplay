@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------------------------------
 
 function InitDiscordScript ( ) {
-	
-	return true;
+    
+    return true;
 
 }
 
@@ -10,8 +10,8 @@ function InitDiscordScript ( ) {
 
 function EchoEventToDiscord ( szEventText , bOverride = false ) {
 
-	CallFunc ( "Scripts/lilc-discord/main.nut" , "EchoEventToDiscord" , szEventText , bOverride );
-	return true;
+    CallFunc ( "Scripts/lilc-discord/main.nut" , "EchoEventToDiscord" , szEventText , bOverride );
+    return true;
 
 }
 
@@ -19,9 +19,9 @@ function EchoEventToDiscord ( szEventText , bOverride = false ) {
 
 function EchoChatToDiscord ( szName , szText ) {
 
-	CallFunc ( "Scripts/lilc-discord/main.nut" , "EchoPlayerChat" , szName , szText );
-	
-	return true;
+    CallFunc ( "Scripts/lilc-discord/main.nut" , "EchoPlayerChat" , szName , szText );
+    
+    return true;
 
 }
 

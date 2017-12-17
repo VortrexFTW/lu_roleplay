@@ -2,9 +2,9 @@
 
 function InitMiscScript ( ) {
 
-	AddMiscCommandHandlers ( )
-	
-	return true;
+    AddMiscCommandHandlers ( )
+    
+    return true;
 
 }
 

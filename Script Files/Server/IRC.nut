@@ -1,8 +1,8 @@
 // -------------------------------------------------------------------------------------------------
 
 function InitIRCScript ( ) {
-	
-	return true;
+    
+    return true;
 
 }
 
@@ -10,9 +10,9 @@ function InitIRCScript ( ) {
 
 function EchoEventToIRC ( szEventText , bEchoOverride = false ) {
 
-	CallFunc ( "lilc-irc/Server.nut" , "EchoEventToIRC" , szEventText , bEchoOverride );
+    CallFunc ( "lilc-irc/Server.nut" , "EchoEventToIRC" , szEventText , bEchoOverride );
 
-	return true;
+    return true;
 
 }
 
@@ -20,9 +20,9 @@ function EchoEventToIRC ( szEventText , bEchoOverride = false ) {
 
 function IRCOnPlayerConnect ( pPlayer ) {
 
-	EchoEventToIRC ( pPlayer.Name + " has joined the game" , true );
+    EchoEventToIRC ( pPlayer.Name + " has joined the game" , true );
 
-	return true;
+    return true;
 
 }
 
@@ -30,9 +30,9 @@ function IRCOnPlayerConnect ( pPlayer ) {
 
 function IRCOnPlayerPart ( pPlayer , iReason ) {
 
-	EchoEventToIRC ( pPlayer.Name + " has left the game (" + GetPartReasonText ( iReason ) + ")" , true );
+    EchoEventToIRC ( pPlayer.Name + " has left the game (" + GetPartReasonText ( iReason ) + ")" , true );
 
-	return true;
+    return true;
 
 }
 

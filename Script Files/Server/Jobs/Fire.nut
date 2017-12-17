@@ -5,18 +5,18 @@
 
 function InitFireJobScript ( ) {
 
-	AddFireJobCommandHandlers ( );
-	
-	return true;
+    AddFireJobCommandHandlers ( );
+    
+    return true;
 
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function AddFireJobCommandHandlers ( ) {
-	
-	return true;
-	
+    
+    return true;
+    
 }
 
 
@@ -24,7 +24,7 @@ function AddFireJobCommandHandlers ( ) {
 
 function GetRandomFireMission ( ) {
 
-	return Random ( 0 , GetCoreTable ( ).Locations.FireJobVehicles.len ( ) );
+    return Random ( 0 , GetCoreTable ( ).Locations.FireJobVehicles.len ( ) );
 
 }
 
@@ -32,30 +32,30 @@ function GetRandomFireMission ( ) {
 
 function GetRandomInactiveFireMission ( iIsland ) {
 
-	local iFireMissionID = GetRandomFireMission ( );
+    local iFireMissionID = GetRandomFireMission ( );
 
-	while ( IsFireJobMissionActive ( iFireMissionID ) || GetIsland ( GetFireMissionData ( iFireMissionID ).pPosition ) != iIsland ) {
-	
-		iFireMissionID = GetRandomFireMission ( );
-	
-	}
-	
-	return iFireMissionID;
-	
+    while ( IsFireJobMissionActive ( iFireMissionID ) || GetIsland ( GetFireMissionData ( iFireMissionID ).pPosition ) != iIsland ) {
+    
+        iFireMissionID = GetRandomFireMission ( );
+    
+    }
+    
+    return iFireMissionID;
+    
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function CreateFireJobBurningVehicle ( iFireJobID ) {
 
-	local pVehicle = CreateNewVehicle ( GetFireJobRandomVehicleModel ( ) , GetCoreTable ( ).Locations.FireJobVehicles [ iFireJobID ].pPosition , Random ( 0 , 359 ) );
-	
-	pVehicle.Locked = true;
-	pVehicle.SetEngineState ( false );
-	
-	GetVehicleData ( pVehicle ).bTempVehicle = true;
+    local pVehicle = CreateNewVehicle ( GetFireJobRandomVehicleModel ( ) , GetCoreTable ( ).Locations.FireJobVehicles [ iFireJobID ].pPosition , Random ( 0 , 359 ) );
+    
+    pVehicle.Locked = true;
+    pVehicle.SetEngineState ( false );
+    
+    GetVehicleData ( pVehicle ).bTempVehicle = true;
 
-	return true;
+    return true;
 
 }
 
@@ -63,7 +63,7 @@ function CreateFireJobBurningVehicle ( iFireJobID ) {
 
 function IsFireJobMissionActive ( iFireJobID ) {
 
-	return GetCoreTable ( ).Locations.FireJobVehicles [ iFireJobID ].bActive;
+    return GetCoreTable ( ).Locations.FireJobVehicles [ iFireJobID ].bActive;
 
 }
 
@@ -71,7 +71,7 @@ function IsFireJobMissionActive ( iFireJobID ) {
 
 function GetFireMissionData ( iFireMissionID ) {
 
-	return GetCoreTable ( ).Locations.FireJobVehicles [ iFireMissionID ];
+    return GetCoreTable ( ).Locations.FireJobVehicles [ iFireMissionID ];
 
 }
 
@@ -79,62 +79,62 @@ function GetFireMissionData ( iFireMissionID ) {
 
 function IsFiretruckAimingAtVehicle ( pFiretruck , pVehicle ) {
 
-	local fDistanceToVehicle = GetDistance ( pFiretruck.Pos , pVehicle.Pos );
-	local pFrontOfFiretruck = GetVectorInFrontOfVector ( pFiretruck.Pos , pFiretruck.Angle , fDistanceToVehicle );
-	
-	if ( fDistanceToVehicle > 40.0 ) {
-	
-		return false;
-	
-	}
-	
-	if ( GetDistance ( pFrontOfFiretruck , pVehicle.Pos ) < 5.0 ) {
-	
-		return true;
-	
-	}
-	
-	return false;
+    local fDistanceToVehicle = GetDistance ( pFiretruck.Pos , pVehicle.Pos );
+    local pFrontOfFiretruck = GetVectorInFrontOfVector ( pFiretruck.Pos , pFiretruck.Angle , fDistanceToVehicle );
+    
+    if ( fDistanceToVehicle > 40.0 ) {
+    
+        return false;
+    
+    }
+    
+    if ( GetDistance ( pFrontOfFiretruck , pVehicle.Pos ) < 5.0 ) {
+    
+        return true;
+    
+    }
+    
+    return false;
 
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function AttemptVehicleFireExtinguish ( pPlayer ) {
-	
-	if ( GetPlayerData ( pPlayer ).iFireMission == -1 ) {
-	
-		return true;
-	
-	}
+    
+    if ( GetPlayerData ( pPlayer ).iFireMission == -1 ) {
+    
+        return true;
+    
+    }
 
-	if ( IsFiretruckAimingAtVehicle ( pPlayer.Vehicle , GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pVehicle ) ) {
-	
-		RemoveFireMissionVehicle ( GetPlayerData ( pPlayer ).iFireMission );
-				
-		GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pBlip.Remove ( );
-	
-		NewTimer ( "ActivateRandomFireMission" , 5000 , 1 , pPlayer );
+    if ( IsFiretruckAimingAtVehicle ( pPlayer.Vehicle , GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pVehicle ) ) {
+    
+        RemoveFireMissionVehicle ( GetPlayerData ( pPlayer ).iFireMission );
+                
+        GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pBlip.Remove ( );
+    
+        NewTimer ( "ActivateRandomFireMission" , 5000 , 1 , pPlayer );
 
-		GivePlayerCash ( pPlayer , 100 );
-	
-		GetPlayerData ( pPlayer ).iFireMission = -1;
-	
-	}
+        GivePlayerCash ( pPlayer , 100 );
+    
+        GetPlayerData ( pPlayer ).iFireMission = -1;
+    
+    }
 
 } 
 
 // -------------------------------------------------------------------------------------------------
 
 function PlayerFireMissionSuccessful ( pPlayer ) {
-	
-	GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pBlip.Remove ( );
-	
-	SmallMessage ( pPlayer , "You got $100 for putting out the fire" , 5000 , 0 );
-	
-	NewTimer ( "ActivateRandomFireMission" , 7000 , 1 , pPlayer );
+    
+    GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pBlip.Remove ( );
+    
+    SmallMessage ( pPlayer , "You got $100 for putting out the fire" , 5000 , 0 );
+    
+    NewTimer ( "ActivateRandomFireMission" , 7000 , 1 , pPlayer );
 
-	GivePlayerCash ( pPlayer , 100 );
+    GivePlayerCash ( pPlayer , 100 );
 
 }
 
@@ -142,14 +142,14 @@ function PlayerFireMissionSuccessful ( pPlayer ) {
 
 function RemoveFireMissionVehicle ( iFireMission ) {
 
-	GetFireMissionData ( iFireMission ).bActive = false;
-	GetFireMissionData ( iFireMission ).pVehicle.VirtualWorld = 3;
-	
-	local iVehicleDataID = GetCoreTable ( ).VehicleToData [ GetFireMissionData ( iFireMission ).pVehicle.ID ];
-	GetCoreTable ( ).VehicleToData [ GetFireMissionData ( iFireMission ).pVehicle.ID ] = false;
-	GetCoreTable ( ).Vehicles [ iVehicleDataID ].pVehicle = false;
-	
-	GetFireMissionData ( iFireMission ).pVehicle.Remove ( );
+    GetFireMissionData ( iFireMission ).bActive = false;
+    GetFireMissionData ( iFireMission ).pVehicle.VirtualWorld = 3;
+    
+    local iVehicleDataID = GetCoreTable ( ).VehicleToData [ GetFireMissionData ( iFireMission ).pVehicle.ID ];
+    GetCoreTable ( ).VehicleToData [ GetFireMissionData ( iFireMission ).pVehicle.ID ] = false;
+    GetCoreTable ( ).Vehicles [ iVehicleDataID ].pVehicle = false;
+    
+    GetFireMissionData ( iFireMission ).pVehicle.Remove ( );
 
 }
 
@@ -157,9 +157,9 @@ function RemoveFireMissionVehicle ( iFireMission ) {
 
 function GetRandomFireMissionVehicleModel ( ) {
 
-	local pTempVehicles = [ VEH_LANDSTALKER , VEH_IDAHO , VEH_PERENIAL , VEH_SENTINEL , VEH_MANANA , VEH_BLISTA , VEH_PONY , VEH_MOONBEAM , VEH_ESPERANTO , VEH_KURUMA , VEH_BOBCAT , VEH_STALLION , VEH_RUMPO ];
-	
-	return pTempVehicles [ Random ( 0 , pTempVehicles.len ( ) ) ];
+    local pTempVehicles = [ VEH_LANDSTALKER , VEH_IDAHO , VEH_PERENIAL , VEH_SENTINEL , VEH_MANANA , VEH_BLISTA , VEH_PONY , VEH_MOONBEAM , VEH_ESPERANTO , VEH_KURUMA , VEH_BOBCAT , VEH_STALLION , VEH_RUMPO ];
+    
+    return pTempVehicles [ Random ( 0 , pTempVehicles.len ( ) ) ];
 
 }
 
@@ -167,39 +167,39 @@ function GetRandomFireMissionVehicleModel ( ) {
 
 function ActivateRandomFireMission ( pPlayer ) {
 
-	local iFireMission = GetRandomInactiveFireMission ( GetIsland ( pPlayer.Pos ) );
-	
-	local iTestModel = GetRandomFireMissionVehicleModel ( );
-	local pTestPosition = GetFireMissionData ( iFireMission ).pPosition;
-	local iTestAngle = Random ( 0 , 359 );
-	local pTestColour = Colour ( Random ( 0 , 255 ) , Random ( 0 , 255 ) , Random ( 0 , 255 ) );
+    local iFireMission = GetRandomInactiveFireMission ( GetIsland ( pPlayer.Pos ) );
+    
+    local iTestModel = GetRandomFireMissionVehicleModel ( );
+    local pTestPosition = GetFireMissionData ( iFireMission ).pPosition;
+    local iTestAngle = Random ( 0 , 359 );
+    local pTestColour = Colour ( Random ( 0 , 255 ) , Random ( 0 , 255 ) , Random ( 0 , 255 ) );
 
-	local pTestVehicle = CreateNewVehicle ( iTestModel , pTestPosition , iTestAngle , pTestColour , pTestColour );
-	
-	if ( pTestVehicle ) {
-	
-		pTestVehicle.Locked = true;
-		pTestVehicle.SetEngineState ( false );
-		
-		GetVehicleData ( pTestVehicle ).bTempVehicle = true;
-		
-		GetFireMissionData ( iFireMission ).bActive = true;
-		GetFireMissionData ( iFireMission ).pVehicle = pTestVehicle;
-		GetFireMissionData ( iFireMission ).pBlip = CreateClientBlip ( pPlayer , 0 , pTestPosition );
-		GetFireMissionData ( iFireMission ).pBlip.Size = 4;
-		GetFireMissionData ( iFireMission ).pBlip.Colour = 8;
-		
-		SmallMessage ( pPlayer , "A vehicle fire has been reported at ~r~" + GetDistrictName ( pTestPosition.x , pTestPosition.y ) , 6000 , 0 );
-		
-		GetPlayerData ( pPlayer ).iFireMission = iFireMission;
-	
-	} else {
-	
-		SendPlayerAlertMessage ( pPlayer , "There are no firefighter missions for you to do! Try again later!" );
-	
-	}
-	
-	return false;
+    local pTestVehicle = CreateNewVehicle ( iTestModel , pTestPosition , iTestAngle , pTestColour , pTestColour );
+    
+    if ( pTestVehicle ) {
+    
+        pTestVehicle.Locked = true;
+        pTestVehicle.SetEngineState ( false );
+        
+        GetVehicleData ( pTestVehicle ).bTempVehicle = true;
+        
+        GetFireMissionData ( iFireMission ).bActive = true;
+        GetFireMissionData ( iFireMission ).pVehicle = pTestVehicle;
+        GetFireMissionData ( iFireMission ).pBlip = CreateClientBlip ( pPlayer , 0 , pTestPosition );
+        GetFireMissionData ( iFireMission ).pBlip.Size = 4;
+        GetFireMissionData ( iFireMission ).pBlip.Colour = 8;
+        
+        SmallMessage ( pPlayer , "A vehicle fire has been reported at ~r~" + GetDistrictName ( pTestPosition.x , pTestPosition.y ) , 6000 , 0 );
+        
+        GetPlayerData ( pPlayer ).iFireMission = iFireMission;
+    
+    } else {
+    
+        SendPlayerAlertMessage ( pPlayer , "There are no firefighter missions for you to do! Try again later!" );
+    
+    }
+    
+    return false;
 
 }
 
@@ -207,15 +207,15 @@ function ActivateRandomFireMission ( pPlayer ) {
 
 function FireJobTimerFunction ( ) {
 
-	foreach ( ii , iv in GetCoreTable ( ).Locations.FireJobVehicles ) {
-	
-		if ( iv.bActive ) {
-		
-			iv.pVehicle.Health = 250;
-		
-		}
-	
-	}
+    foreach ( ii , iv in GetCoreTable ( ).Locations.FireJobVehicles ) {
+    
+        if ( iv.bActive ) {
+        
+            iv.pVehicle.Health = 250;
+        
+        }
+    
+    }
 
 }
 
@@ -223,39 +223,39 @@ function FireJobTimerFunction ( ) {
 
 function PlayerFireMissionFailed ( pPlayer ) {
 
-	SmallMessage ( pPlayer , "You failed to extinguish the fire!" , 5000 , 0 );
+    SmallMessage ( pPlayer , "You failed to extinguish the fire!" , 5000 , 0 );
 
-	if ( GetPlayerData ( pPlayer ).iFireMission == -1 ) {
-	
-		return false;
-	
-	}
+    if ( GetPlayerData ( pPlayer ).iFireMission == -1 ) {
+    
+        return false;
+    
+    }
 
-	GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pBlip.Remove ( );
-	
-	RemoveFireMissionVehicle ( GetPlayerData ( pPlayer ).iFireMission );
-	
-	GetPlayerData ( pPlayer ).iFireMission = -1;
-	
+    GetFireMissionData ( GetPlayerData ( pPlayer ).iFireMission ).pBlip.Remove ( );
+    
+    RemoveFireMissionVehicle ( GetPlayerData ( pPlayer ).iFireMission );
+    
+    GetPlayerData ( pPlayer ).iFireMission = -1;
+    
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function IsPlayerFirefighter ( pPlayer ) {
 
-	local pPlayerData = GetPlayerData ( pPlayer );
-	
-	if ( DoesPlayerHaveAJob ( pPlayer ) ) {
-	
-		if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Fire ) {
-		
-			return true;
-		
-		}
-		
-	}
-	
-	return false;
+    local pPlayerData = GetPlayerData ( pPlayer );
+    
+    if ( DoesPlayerHaveAJob ( pPlayer ) ) {
+    
+        if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Fire ) {
+        
+            return true;
+        
+        }
+        
+    }
+    
+    return false;
 
 }
 

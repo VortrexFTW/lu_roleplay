@@ -4,29 +4,29 @@
 
 function InitMedicJobScript ( ) {
 
-	AddMedicJobCommandHandlers ( );
-	
-	print ( "[Server.Jobs.Medic]: Script init complete." );
+    AddMedicJobCommandHandlers ( );
+    
+    print ( "[Server.Jobs.Medic]: Script init complete." );
 
-	return true;
+    return true;
 
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function AddMedicJobCommandHandlers ( ) {
-	
-	print ( "[Server.Jobs.Medic]: Command handlers added." );
-	
-	return true;
-	
+    
+    print ( "[Server.Jobs.Medic]: Command handlers added." );
+    
+    return true;
+    
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function GetRandomMedicMissionPos ( ) {
 
-	return false;
+    return false;
 
 }
 
@@ -34,19 +34,19 @@ function GetRandomMedicMissionPos ( ) {
 
 function IsPlayerMedic ( pPlayer ) {
 
-	local pPlayerData = GetPlayerData ( pPlayer );
-	
-	if ( DoesPlayerHaveAJob ( pPlayer ) ) {
-	
-		if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Medic ) {
-		
-			return true;
-		
-		}
-		
-	}
-	
-	return false;
+    local pPlayerData = GetPlayerData ( pPlayer );
+    
+    if ( DoesPlayerHaveAJob ( pPlayer ) ) {
+    
+        if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Medic ) {
+        
+            return true;
+        
+        }
+        
+    }
+    
+    return false;
 
 }
 

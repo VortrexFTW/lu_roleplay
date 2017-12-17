@@ -2,41 +2,41 @@
 
 function InitTaxiJobScript ( ) {
 
-	AddTaxiJobCommandHandlers ( );
-	
-	print ( "[Server.Jobs.Taxi]: Script init complete." );
+    AddTaxiJobCommandHandlers ( );
+    
+    print ( "[Server.Jobs.Taxi]: Script init complete." );
 
-	return true;
+    return true;
 
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function AddTaxiJobCommandHandlers ( ) {
-	
-	print ( "[Server.Jobs.Taxi]: Command handlers added." );
-	
-	return true;
-	
+    
+    print ( "[Server.Jobs.Taxi]: Command handlers added." );
+    
+    return true;
+    
 }
 
 // -------------------------------------------------------------------------------------------------
 
 function IsPlayerTaxiDriver ( pPlayer ) {
 
-	local pPlayerData = GetPlayerData ( pPlayer );
-	
-	if ( DoesPlayerHaveAJob ( pPlayer ) ) {
-	
-		if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Taxi ) {
-		
-			return true;
-		
-		}
-		
-	}
-	
-	return false;
+    local pPlayerData = GetPlayerData ( pPlayer );
+    
+    if ( DoesPlayerHaveAJob ( pPlayer ) ) {
+    
+        if ( GetCoreTable ( ).Jobs [ pPlayerData.iJob ].iJobType == GetUtilityConfiguration ( ).pJobs.Taxi ) {
+        
+            return true;
+        
+        }
+        
+    }
+    
+    return false;
 
 }
 

@@ -6,10 +6,10 @@
 // -------------------------------------------------------------------------------------------------
 
 function InitItemDroppingScript ( ) {
-	
-	AddItemDroppingCommandHandlers ( );
-	
-	return true;
+    
+    AddItemDroppingCommandHandlers ( );
+    
+    return true;
 
 }
 
@@ -17,15 +17,15 @@ function InitItemDroppingScript ( ) {
 
 function AddItemDroppingCommandHandlers ( ) {
 
-	//AddCommandHandler ( "DropWep" 				, DropWeaponCommand 				, GetStaffFlagValue ( "None" ) );
-	//AddCommandHandler ( "PickupWep" 			, PickupWeaponCommand 				, GetStaffFlagValue ( "None" ) );
-	//AddCommandHandler ( "GiveWep" 				, GiveWeaponCommand 				, GetStaffFlagValue ( "None" ) );
-	
-	//AddCommandHandler ( "DropGun" 				, DropWeaponCommand 				, GetStaffFlagValue ( "None" ) );
-	//AddCommandHandler ( "PickupGun" 			, PickupWeaponCommand 				, GetStaffFlagValue ( "None" ) );
-	//AddCommandHandler ( "GiveGun" 				, GiveWeaponCommand 				, GetStaffFlagValue ( "None" ) );
+    //AddCommandHandler ( "DropWep"                 , DropWeaponCommand                 , GetStaffFlagValue ( "None" ) );
+    //AddCommandHandler ( "PickupWep"           , PickupWeaponCommand               , GetStaffFlagValue ( "None" ) );
+    //AddCommandHandler ( "GiveWep"                 , GiveWeaponCommand                 , GetStaffFlagValue ( "None" ) );
+    
+    //AddCommandHandler ( "DropGun"                 , DropWeaponCommand                 , GetStaffFlagValue ( "None" ) );
+    //AddCommandHandler ( "PickupGun"           , PickupWeaponCommand               , GetStaffFlagValue ( "None" ) );
+    //AddCommandHandler ( "GiveGun"                 , GiveWeaponCommand                 , GetStaffFlagValue ( "None" ) );
 
-	return true;
+    return true;
 
 }
 
@@ -33,7 +33,7 @@ function AddItemDroppingCommandHandlers ( ) {
 
 function DropWeapon ( iWeaponID , pPosition , iAmmo ) {
 
-	return true;
+    return true;
 
 }
 

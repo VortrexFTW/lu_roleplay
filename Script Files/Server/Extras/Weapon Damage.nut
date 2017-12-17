@@ -2,7 +2,7 @@
 
 function InitWeaponDamageScript ( ) {
 
-	return true;
+    return true;
 
 }
 

@@ -1,13 +1,13 @@
 function InitWebsiteScript ( ) {
 
-	InitWebsiteCommandHandlers ( );
-	
-	return true;
+    InitWebsiteCommandHandlers ( );
+    
+    return true;
 
 }
 
 function AddWebsiteCommandHandlers ( ) {
 
-	return true;
+    return true;
 
 }
