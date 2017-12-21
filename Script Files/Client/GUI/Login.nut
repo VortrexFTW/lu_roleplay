@@ -3,8 +3,8 @@
 function InitLoginGUI ( ) {
     
     print ( "[Client.GUI]: Login window INIT" );
-	
-	local pLoginGUI <- { };
+    
+    local pLoginGUI <- { };
     
     pLoginGUI.Window <- GUIWindow ( VectorScreen ( ScreenWidth / 2 - 150 , ScreenHeight / 2 - 115 ) , ScreenSize ( 300 , 230 ) , "LOGIN" );
     AddGUILayer ( pLoginGUI.Window );
@@ -90,8 +90,8 @@ function InitLoginGUI ( ) {
     pLoginGUI.Window.Visible = false;
     
     print ( "[Client.GUI]: Login window DONE" );
-	
-	return pLoginGUI;
+    
+    return pLoginGUI;
 
 }
 

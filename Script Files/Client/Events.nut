@@ -2,8 +2,8 @@
 
 function onClientMouseWheel ( bWheelUp ) {
 
-	HandleCustomBindKeyScrollWheel ( bWheelUp );
-	
+    HandleCustomBindKeyScrollWheel ( bWheelUp );
+    
     HandleClanManagerScrolling ( bWheelUp );    
     
     return true;
@@ -76,7 +76,7 @@ function onPlayerPart ( pPlayer , iReason ) {
 
 function onClientKeyStateChange ( iOldKeys , iNewKeys ) {
 
-	HandleFireTruckExtinguishKeyPress ( iOldKeys , iNewKeys );
+    HandleFireTruckExtinguishKeyPress ( iOldKeys , iNewKeys );
 
 }
 
@@ -84,7 +84,7 @@ function onClientKeyStateChange ( iOldKeys , iNewKeys ) {
 
 function onClientMouseClick ( iButton , bDown , iX , iY ) {
 
-	HandleCustomBindKeysMouseClick ( iButton , bDown );
+    HandleCustomBindKeysMouseClick ( iButton , bDown );
 
 }
 
@@ -92,7 +92,7 @@ function onClientMouseClick ( iButton , bDown , iX , iY ) {
 
 function onClientShot ( pPlayer , iWeaponID , iBodyPart ) {
     
-	HandleTazerShot ( pPlayer , iWeaponID , iBodyPart );
+    HandleTazerShot ( pPlayer , iWeaponID , iBodyPart );
     
     return 1;
 

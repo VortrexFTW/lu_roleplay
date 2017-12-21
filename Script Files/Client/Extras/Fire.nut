@@ -13,7 +13,7 @@ function HandleFireTruckExtinguishKeyPress ( iOldKeys , iNewKeys ) {
         CallServerFunc ( szServerScript , "FiretruckHoseSprayStop" , FindLocalPlayer ( ) , time ( ) );
     
     }
-	
+    
 }
 
 // -------------------------------------------------------------------------------------------------

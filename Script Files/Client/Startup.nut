@@ -23,7 +23,7 @@ function onScriptLoad ( ) {
     
     CallServerFunc ( szServerScript , "ClientReady" , FindLocalPlayer ( ) , clock ( ) );
 
-	InitBindKeys ( );
+    InitBindKeys ( );
     
 }
 

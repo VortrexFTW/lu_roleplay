@@ -103,8 +103,8 @@ function InitRegisterGUI ( ) {
     pRegisterGUI.Window.Visible = false;    
     
     print ( "[Client.GUI]: Registration window DONE" );
-	
-	return pRegisterGUI;
+    
+    return pRegisterGUI;
     
 }
 

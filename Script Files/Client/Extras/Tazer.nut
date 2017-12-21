@@ -5,5 +5,5 @@ function HandleTazerShot ( pPlayer , iWeaponID , iBodyPart ) {
         CheckTazerShot ( pPlayer );
     
     }
-	
+    
 }

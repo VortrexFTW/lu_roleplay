@@ -6,9 +6,9 @@ function InitBindKeys ( ) {
     bMouseWheelUpBind <- false;
     bMouseWheelDownBind <- false;
     bLeftMouseReleaseBind <- false;
-	bRightMouseReleaseBind <- false;
+    bRightMouseReleaseBind <- false;
     bMiddleMouseReleaseBind <- false;   
-	
+    
 }
 
 // -------------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ function HandleCustomBindKeyMouseClick ( iButton , bDown ) {
         }
     
     }  
-	
+    
 }
 
 // -------------------------------------------------------------------------------------------------
