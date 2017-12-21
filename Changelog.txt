@@ -1,0 +1,8 @@
+- Added Authentication.nut, and moved all login/register stuff to it
+- Moved locale commands from Account.nut to Locale.nut
+- Added Chinese, Polish, and German locale files. Needs translations!
+- Moved custom bind key stuff from Account.nut to Extras/Bind Keys.nut
+- Added some comments in places that would seem confusing.
+- Fixed a bunch of broken variable names in client script
+- Added variable identifier prefixes to several variables in client script.
+- Added basic swimming stuff to client.nut
