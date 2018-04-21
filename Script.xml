@@ -1,4 +1,24 @@
 <script file="Server.nut" client="0" />
 <script file="Client.nut" client="1" />
 
+<script file="Script Files/Client/Authentication.nut" client="1" />
+<script file="Script Files/Client/Bind Keys.nut" client="1" />
+<script file="Script Files/Client/Clan.nut" client="1" />
+<script file="Script Files/Client/Event.nut" client="1" />
+<script file="Script Files/Client/GUI.nut" client="1" />
+<script file="Script Files/Client/Security.nut" client="1" />
+<script file="Script Files/Client/Startup.nut" client="1" />
+<script file="Script Files/Client/Utilities.nut" client="1" />\
+
+<script file="Script Files/Client/GUI/Clan Manager.nut" client="1" />
+<script file="Script Files/Client/GUI/Login.nut" client="1" />
+<script file="Script Files/Client/GUI/Register.nut" client="1" />
+<script file="Script Files/Client/GUI/Fire.nut" client="1" />
+<script file="Script Files/Client/GUI/Screen Info.nut" client="1" />
+<script file="Script Files/Client/GUI/Swimming.nut" client="1" />
+<script file="Script Files/Client/GUI/Tazer.nut" client="1" />
+<script file="Script Files/Client/GUI/Vehicle Controls.nut" client="1" />
+<script file="Script Files/Client/GUI/Vehicle Hydraulics.nut" client="1" />
+<script file="Script Files/Client/GUI/Vehicle Modifications.nut" client="1" />
+
 <sprite file="logo1.png" />

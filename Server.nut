@@ -98,40 +98,6 @@ function onScriptLoad ( ) {
 
 // -------------------------------------------------------------------------------------------------
 
-function BothHydraulicsUp ( pPlayer ) {
-    
-    UseHydraulicsUp ( pPlayer );    
-
-}
-
-// -------------------------------------------------------------------------------------------------
-
-function BothHydraulicsDown ( pPlayer ) {
-
-    UseHydraulicsDown ( pPlayer );
-
-}
-
-// -------------------------------------------------------------------------------------------------
-
-function CheckTazerShot ( pPlayer , pShooter ) {
-
-    local pPlayerData = GetPlayerData ( pPlayer );
-
-    if ( pPlayerData.bTazerArmed ) {
-    
-        PlayerShotByTazer ( pShooter , pPlayer );
-        
-        return true;
-    
-    }
-    
-    return false;
-
-}
-
-// -------------------------------------------------------------------------------------------------
-
 function UseCustomBindKey ( pPlayer , iKey ) {
     
     if ( DoesPlayerHaveCustomBindKey ( pPlayer , iKey ) ) {
