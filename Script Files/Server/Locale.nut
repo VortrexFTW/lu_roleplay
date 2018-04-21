@@ -43,7 +43,7 @@ function GetPlayerLocaleMessage ( pPlayer , szMessageType ) {
 
     local pPlayerData = GetPlayerData ( pPlayer );
 
-    return GetCoreTable ( ).Locale [ pPlayerData.iLocale ] [ szMessageType ];
+    return GetLocaleMessage ( pPlayerData.iLocale , szMessageType );
     
 }
 

@@ -422,7 +422,18 @@ return {
     StaffFlagDoesntExist = "There is no staff flag called %s!" , 
     UseCommandForStaffFlags = "Use /StaffFlags for a list of staff flags." , 
     LanguageSet = "Your language is now set to English" ,  // Put the language name here
-    
+	
+	// Added on Apr 21 2018
+	ScriptReloadingReconnect = "The script is reloading. Please reconnect!" ,
+	PlayerLeftServer = "%s has left the server! (%s)" , 
+	RemovedFromVehicleWarp = "You have been removed from the vehicle because you teleported into it" , 
+	EngineNotRunningHasKeys = "The engine is not running. Use /%s to start it." , 
+	OtherVehOwner = "This %s owned by %s" , 
+	EngineNotRunningNoKeys = "The engine is not running. You don't have the keys to start it." , 
+	VehOwnedByClan = "This %s is owned by the '%s' clan" , 
+	NotInClan = "You aren't in the %s clan" ,
+	CantDriveVehicle = "You can't drive this vehicle." ,
+	
     LastItem = false 
     
 }

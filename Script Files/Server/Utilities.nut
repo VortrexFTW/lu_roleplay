@@ -1335,6 +1335,18 @@ function ClearChat ( pPlayer ) {
 
 // -------------------------------------------------------------------------------------------------
 
+function ClearAllChat ( ) { 
+
+    for ( local i = 0 ; i < 50 ; i++ ) {
+    
+        Message ( " " );
+    
+    }
+
+}
+
+// -------------------------------------------------------------------------------------------------
+
 function IsPlayerLoggedIn ( pPlayer ) {
 
     if ( GetPlayerData ( pPlayer ).bAuthenticated ) {
