@@ -26,8 +26,16 @@ function onServerStart ( ) {
 function onScriptUnload ( ) {
 
     print ( "- Script is unloading. Kicking all players" );
+	
+	
     
-    Message ( "SCRIPT RE-LOADING ... PLEASE /RECONNECT !!!" , Colour ( 255 , 128 , 0 ) );
+	foreach ( ii , iv in GetConnectedPlayers ( ) ) {
+	
+		ClearChat ( iv );
+		
+		SendPlayerAlertMessage ( iv , GetPlayerLocaleMessage ( iv , "ScriptReloadingReconnect" ) );
+		
+	}
 
     ForceAllPlayersToSpawnScreen ( );
     
@@ -154,8 +162,13 @@ function onPlayerPart ( pPlayer , iReason ) {
     EchoEventToDiscord ( pPlayer.Name + " has left the server! (" + GetCoreTable ( ).Utilities.szPartReasons [ iReason ] + ")" , true );    
     
     IRCOnPlayerPart ( pPlayer , iReason );
-    
-    Message ( GetHexColour ( "White" ) + pPlayer.Name + GetHexColour ( "LightGrey" ) + " has left the server! (" + GetCoreTable ( ).Utilities.szPartReasons [ iReason ] + ")" , GetRGBColour ( "White" ) );
+	
+	foreach ( ii , iv in GetConnectedPlayers ( ) ) {
+	
+		
+		MessagePlayer ( format ( GetPlayerLocaleMessage ( iv , "PlayerDisconnected" ) , pPlayer.Name , GetPlayerGroupedLocaleMessage ( iv , "PartReasons" , iReason ) ) , iv , GetRGBColour ( "White" ) );	
+	
+	}
     
     return true;
     
@@ -220,7 +233,7 @@ function onPlayerEnteringVehicle ( pPlayer , pVehicle , iSeatID ) {
     
     if ( pVehicle.Locked ) {
     
-        SendPlayerAlertMessage ( pPlayer , "This " + GetVehicleName ( pVehicle ) + " is locked. If you have the keys, use '/Lock Off'" );
+        SendPlayerAlertMessage ( pPlayer , GetPlayerLocaleMessage ( pPlayer , "VehicleIsLocked" ) );
     
         return false;
     
@@ -254,7 +267,7 @@ function onPlayerEnteredVehicle ( pPlayer , pVehicle , iSeatID ) {
     
     if ( pVehicleData.bLocked ) {
     
-        SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "VehicleIsLocked" ) , GetVehicleDisplayName ( pVehicle ) ) );        
+        SendPlayerAlertMessage ( pPlayer , GetPlayerLocaleMessage ( pPlayer , "VehicleIsLocked" ) );        
         pPlayer.RemoveFromVehicle ( );
         
         EchoEventToIRC ( "Player '" + pPlayer.Name + "' (ID " + pPlayer.ID + ") was removed from Vehicle: " + pVehicle.ID + " (" + GetVehicleDisplayName ( pVehicle ) + ") from Seat: " + iSeatID + " because it was locked and they got in" , false );
@@ -268,7 +281,7 @@ function onPlayerEnteredVehicle ( pPlayer , pVehicle , iSeatID ) {
     
     if ( !pPlayerData.pEnteringVehicleNormally || pPlayerData.pEnteringVehicleNormally.ID != pVehicle.ID ) {
     
-        SendPlayerAlertMessage ( pPlayer , "You have been removed from the vehicle because you teleported into it." );  
+        SendPlayerAlertMessage ( pPlayer , GetPlayerLocaleMessage ( pPlayer , "RemovedFromVehicleWarp" ) );  
         pPlayer.RemoveFromVehicle ( );
         
         if ( ( time ( ) - pPlayerData.iTeleportIntoVehicleTime ) == GetUtilityConfiguration ( ).iTeleportIntoVehicleCheck ) {
@@ -315,11 +328,11 @@ function onPlayerEnteredVehicle ( pPlayer , pVehicle , iSeatID ) {
             
             if ( pVehicleData.iOwnerID.tointeger ( ) == pPlayerData.iDatabaseID ) {
         
-                SendPlayerAlertMessage ( pPlayer , "You are the owner of this " + GetVehicleName ( pVehicle ) );
+                SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "YouAreVehOwner" ) , GetVehicleName ( pVehicle ) ) );
                 
                 if ( !pVehicleData.bEngine ) {
                 
-                    SendPlayerAlertMessage ( pPlayer , "The engine is not running. Use '/Engine On' to start it." );
+                    SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "EngineNotRunningHasKeys" ) , "Engine On" ) );
                 
                 }               
                     
@@ -329,11 +342,13 @@ function onPlayerEnteredVehicle ( pPlayer , pVehicle , iSeatID ) {
                 
             } else {
             
-                SendPlayerAlertMessage ( pPlayer , "This " + GetVehicleName ( pVehicle ) + " is owned by " + LoadAccountFromDatabaseByID ( GetVehicleData ( pVehicle ).iOwnerID ).szName );
+				
+			
+                SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "OtherVehOwner" ) , GetVehicleName ( pVehicle ) , LoadAccountFromDatabaseByID ( GetVehicleData ( pVehicle ).iOwnerID ).szName ) );
                 
                 if ( !pVehicleData.bEngine ) {
                 
-                    SendPlayerAlertMessage ( pPlayer , "The engine is not running. You do not have keys to start it." );
+                    SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "EngineNotRunningNoKeys" ) , "Engine On" )  );
                 
                 }           
             
@@ -343,11 +358,11 @@ function onPlayerEnteredVehicle ( pPlayer , pVehicle , iSeatID ) {
         
         if ( pVehicleData.iOwnerType == 2 ) { // Clan
         
-            SendPlayerAlertMessage ( pPlayer , "This " + GetVehicleName ( pVehicle ) + " is owned by the " + LoadClanFromDatabaseByID ( pVehicleData.iOwnerID ).szName + " clan." );
+            SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "VehOwnedByClan" ) , GetVehicleName ( pVehicle ) , LoadClanFromDatabaseByID ( pVehicleData.iOwnerID ).szName ) );
             
             if ( pPlayerData.iClan != pVehicleData.iOwnerID ) {
             
-                SendPlayerAlertMessage ( pPlayer , "You are not in the " + LoadClanFromDatabaseByID ( pVehicleData.iOwnerID ).szName + " clan. You can't use this vehicle." );
+                SendPlayerAlertMessage ( pPlayer , format ( GetPlayerLocaleMessage ( pPlayer , "NotInClan" ) , LoadClanFromDatabaseByID ( pVehicleData.iOwnerID ).szName ) + " " + GetPlayerLocaleMessage ( pPlayer , "CantDriveVehicle" ) );
             
             } else {
             
